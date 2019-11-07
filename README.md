@@ -1,5 +1,5 @@
 Connect 4
 
-Wireframe
+Wireframe:
 
-![alt](https://i.imgur.com/XVsFhJZ.jpg)
+![alt](https://i.imgur.com/DtgG2Vu.jpg)
