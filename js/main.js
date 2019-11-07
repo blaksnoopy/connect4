@@ -1,6 +1,6 @@
 //variables
 let player, board, winner, playerTurn, colors, spaces,
-    container, columns, column1, column2, column3, 
+    container, columns, column1, column2, column3,
     column4, column5, column6, column7, turn
 
 
@@ -8,21 +8,20 @@ spaces = document.querySelectorAll('div');
 container = document.querySelector('.container');
 colors = {
     emptySpace: null,
-    player1: 1,
-    player2: -1
+    '-1': 'red',
+    '1': 'yellow'
 }
 turn = 1
-board = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-];
 
-// columns = document.querySelectorAll('.columns');
-columns= [
+board = [0, 0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0, 0
+]
+
+columns = [
     column1, column2, column3,
     column4, column5, column6,
     column7
@@ -37,29 +36,32 @@ column6 = document.querySelectorAll('.column6');
 column7 = document.querySelectorAll('.column7');
 
 section = document.querySelector('section')
-section.addEventListener('click', function(evt){
-    console.log(evt.target.id)
-    board.forEach((arr, i) => {
-        arr.forEach((e, j) => {
-            let x = i * 7 + j
-            let circle = document.getElementById(`${x}`)
-            if(evt.target.id == x && !circle.style.backgroundColor) {
-                for(let z = 1; z < 59; z*= 7){
-                    let lowerCircle = document.getElementById(`${evt.target.id + z}`)
-                    console.log(lowerCircle)
-                }
-            } else {
 
+section.addEventListener('click', handleClick)
+
+function handleClick(evt) {
+    board.forEach((arr, i) => {
+        let x = i
+        let circle = document.getElementById(`${x}`)
+        if(evt.target.id <  7) {
+            if (evt.target.id == x && circle.style.backgroundColor == 'white') {
+                let z = 1
+                while (z < 6) {
+                    let currentIdx = parseInt(evt.target.id) + (z * 7)
+                    let lowerCircle = document.getElementById(`${currentIdx}`)
+                    if (lowerCircle.style.backgroundColor == 'white' && z == 5) {
+                        board[currentIdx] = turn
+                    } else if(lowerCircle.style.backgroundColor != 'white') {
+                        board[currentIdx-7] = turn
+                        break
+                    }
+                    z++
+                }
             }
-            circle.style.backgroundColor
-        })
+        }
     })
-    if(!evt.target.style.backgroundColor) {
-    } else {
-    }
-    evt.target.style.backgroundColor = 'black'
-})
-console.log(column1)
+    render()
+}
 
 
 
@@ -70,30 +72,25 @@ function init() {
     winner = null;
 }
 
+render()
+function render() {
+    board.forEach((val, idx) => {
+        if (board[idx] === 0) {
+            spaces[idx].style.backgroundColor = 'white'
+        } else if (board[idx] === 1) {
+            spaces[idx].style.backgroundColor = 'red'
+        } else if (board[idx] === -1) {
+            spaces[idx].style.backgroundColor = 'yellow'
 
-function render (){
-    board.forEach((arr, i) => {
-        arr.forEach((e, j) => {
-            let x = i * 7 + j
-            let circle = document.getElementById(`${x}`)
-            console.log(circle.style.backgroundColor)
-            circle.style.backgroundColor
-        })
+        }
     })
+    turn *= -1
 }
 
-//handle user interaction
-container.addEventListener('click', handleClick);
+function checkWinner() {
 
-
-
-function handleClick(evt) {
-    if(evt.target.tagname !== 'DIV') return;
-    // if(evt.target.columns.contains('0') === false) return;
-    function placePiece(piece) {
-        evt.target.columns[i]
-    }
-} 
+}
+ 
 
 
 
