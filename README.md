@@ -9,5 +9,7 @@ Connect 4 is a game where you try to match 4 colors in a row vertically, horizon
 * Javascript
 
 ###Getting Started
+[Play Connect 4](https://blaksnoopy.github.io/connect4/)
 
+To play you must click the top row of the column you would like to place your piece.
 
