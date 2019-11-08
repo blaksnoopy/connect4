@@ -1,38 +1,24 @@
 //variables
 let player, board, winner, playerTurn, colors, spaces,
     container, columns, column1, column2, column3,
-<<<<<<< HEAD
-    column4, column5, column6, column7, turn
-=======
     column4, column5, column6, column7, turn, winningCombo,
     button, turnContainer, message
->>>>>>> master
 
 
 spaces = document.querySelectorAll('div');
 container = document.querySelector('.container');
-<<<<<<< HEAD
-=======
 message = document.querySelector('h2');
 turnContainer = document.querySelector('.turn');
->>>>>>> master
 colors = {
     emptySpace: null,
     '-1': 'red',
     '1': 'yellow'
-<<<<<<< HEAD
-}
-turn = 1
-
-board = [0, 0, 0, 0, 0, 0, 0,
-=======
 };
 
 turn = 1
 
 board = [
          0, 0, 0, 0, 0, 0, 0,
->>>>>>> master
          0, 0, 0, 0, 0, 0, 0,
          0, 0, 0, 0, 0, 0, 0,
          0, 0, 0, 0, 0, 0, 0,
@@ -40,8 +26,6 @@ board = [
          0, 0, 0, 0, 0, 0, 0
 ]
 
-<<<<<<< HEAD
-=======
 winningComnbo = [
     [0, 7, 14, 21], [1, 8, 15, 22], [2, 9, 16, 23], [3, 10, 17, 24], [4, 11, 18, 25],
     [5, 12, 19, 26], [6, 13, 20, 27], [7, 14, 21, 28], [8, 15, 22, 29], [9, 16, 23, 30],
@@ -59,7 +43,6 @@ winningComnbo = [
     [35, 29, 23, 17], [36, 30, 24, 18], [16, 24, 32, 40], [17, 25, 33, 41]
 ];
 
->>>>>>> master
 columns = [
     column1, column2, column3,
     column4, column5, column6,
@@ -74,62 +57,8 @@ column5 = document.querySelectorAll('.column5');
 column6 = document.querySelectorAll('.column6');
 column7 = document.querySelectorAll('.column7');
 
-section = document.querySelector('section')
-
-section.addEventListener('click', handleClick)
-
-function handleClick(evt) {
-    board.forEach((arr, i) => {
-        let x = i
-        let circle = document.getElementById(`${x}`)
-        if(evt.target.id <  7) {
-            if (evt.target.id == x && circle.style.backgroundColor == 'white') {
-                let z = 1
-                while (z < 6) {
-                    let currentIdx = parseInt(evt.target.id) + (z * 7)
-                    let lowerCircle = document.getElementById(`${currentIdx}`)
-                    if (lowerCircle.style.backgroundColor == 'white' && z == 5) {
-                        board[currentIdx] = turn
-                    } else if(lowerCircle.style.backgroundColor != 'white') {
-                        board[currentIdx-7] = turn
-                        break
-                    }
-                    z++
-                }
-            }
-        }
-    })
-    render()
-}
 
 
-
-<<<<<<< HEAD
-//initialize game
-init();
-function init() {
-    playerTurn *= -1
-    winner = null;
-}
-
-render()
-function render() {
-    board.forEach((val, idx) => {
-        if (board[idx] === 0) {
-            spaces[idx].style.backgroundColor = 'white'
-        } else if (board[idx] === 1) {
-            spaces[idx].style.backgroundColor = 'red'
-        } else if (board[idx] === -1) {
-            spaces[idx].style.backgroundColor = 'yellow'
-
-        }
-    })
-    turn *= -1
-}
-
-function checkWinner() {
-
-=======
 section = document.querySelector('section');
 
 button = document.querySelector('button');
@@ -161,9 +90,7 @@ function handleClick(evt) {
     if(evt.target.style.backgroundColor == 'white'){
         render()
     }
->>>>>>> master
 }
- 
 
 
 

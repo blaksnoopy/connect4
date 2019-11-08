@@ -30,14 +30,9 @@
       margin: 0;
   }
 
-<<<<<<< HEAD
-  /* .column1 {
-    background-color: crimson;
-=======
   h2{
     margin: 10px;
     font-family: 'Oswald', cursive;
->>>>>>> master
   }
 
  button {
@@ -56,25 +51,7 @@ button:hover {
   cursor: pointer;
   box-shadow: 4px 4px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.19);
 
-<<<<<<< HEAD
-  .column4 {
-    background-color: darkkhaki;
-  }
-
-  .column5 {
-    background-color: darksalmon;
-  }
-
-  .column6 {
-    background-color: darkturquoise;
-  }
-
-  .column7 {
-    background-color: deepskyblue;
-  } */
-=======
 }
->>>>>>> master
 
 .toprow {
   cursor: pointer;
