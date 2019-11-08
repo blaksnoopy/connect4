@@ -27,20 +27,36 @@
       text-align: center;
       font-size: 50px;
       font-family: 'Diplomata', cursive;
+      margin: 0;
   }
 
+<<<<<<< HEAD
   /* .column1 {
     background-color: crimson;
+=======
+  h2{
+    margin: 10px;
+    font-family: 'Oswald', cursive;
+>>>>>>> master
   }
 
-  .column2 {
-    background-color: cornflowerblue;
-  }
+ button {
+   margin: 5px;
+   font-size: 30px;
+   background-color: green;
+   color: white;
+   font-weight: bold;
+   outline: none;
+   border-radius: 12px;
+   /* box-shadow: 2px 2px black; */
+   box-shadow: 4px 4px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.19);
+ }
 
-  .column3 {
-    background-color: cyan;
-  }
+button:hover {
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.19);
 
+<<<<<<< HEAD
   .column4 {
     background-color: darkkhaki;
   }
@@ -56,5 +72,15 @@
   .column7 {
     background-color: deepskyblue;
   } */
+=======
+}
+>>>>>>> master
 
+.toprow {
+  cursor: pointer;
+}
 
+.container {
+  background-color: blue;
+  padding: 10px;
+}
