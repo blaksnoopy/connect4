@@ -1,11 +1,14 @@
 //variables
 let player, board, winner, playerTurn, colors, spaces,
     container, columns, column1, column2, column3,
-    column4, column5, column6, column7, turn, winningCombo
+    column4, column5, column6, column7, turn, winningCombo,
+    button, turnContainer, message
 
 
 spaces = document.querySelectorAll('div');
 container = document.querySelector('.container');
+message = document.querySelector('h2');
+turnContainer = document.querySelector('.turn');
 colors = {
     emptySpace: null,
     '-1': 'red',
@@ -14,7 +17,8 @@ colors = {
 
 turn = 1
 
-board = [0, 0, 0, 0, 0, 0, 0,
+board = [
+         0, 0, 0, 0, 0, 0, 0,
          0, 0, 0, 0, 0, 0, 0,
          0, 0, 0, 0, 0, 0, 0,
          0, 0, 0, 0, 0, 0, 0,
@@ -53,11 +57,16 @@ column5 = document.querySelectorAll('.column5');
 column6 = document.querySelectorAll('.column6');
 column7 = document.querySelectorAll('.column7');
 
-section = document.querySelector('section')
 
-section.addEventListener('click', handleClick)
+
+section = document.querySelector('section');
+
+button = document.querySelector('button');
+
+section.addEventListener('click', handleClick);
 
 function handleClick(evt) {
+    if(evt.target.tagName !== "DIV") return
     board.forEach((arr, i) => {
         let x = i
         let circle = document.getElementById(`${x}`)
@@ -78,7 +87,9 @@ function handleClick(evt) {
             }
         }
     })
-    render()
+    if(evt.target.style.backgroundColor == 'white'){
+        render()
+    }
 }
 
 
@@ -86,33 +97,102 @@ function handleClick(evt) {
 //initialize game
 init();
 function init() {
-    playerTurn *= -1
+    turn = 1;
     winner = null;
+    message.textContent = "Let's Play!"
+    spaces.forEach(function(space) {
+        space.style.backgroundColor = 'white';
+    });
+    board = [
+        0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0
+    ];
+    section.addEventListener('click', handleClick);
 }
 
-render()
+// render()
 function render() {
     board.forEach((val, idx) => {
         if (board[idx] === 0) {
             spaces[idx].style.backgroundColor = 'white'
-        } else if (board[idx] === 1) {
-            spaces[idx].style.backgroundColor = 'red'
         } else if (board[idx] === -1) {
+            spaces[idx].style.backgroundColor = 'red'
+        } else if (board[idx] === 1) {
             spaces[idx].style.backgroundColor = 'yellow'
 
         }
     })
     turn *= -1
-}
+    if(turn === 1) {
+        player = 'Yellow'
+        turnContainer.textContent = `${player}'s turn`
+    } else {
+        player = 'Red'
+        turnContainer.textContent = `${player}'s turn`
+    }
+    checkWinner()
+    }
 
+//check for winner
 function checkWinner() {
-
+    if(board.indexOf(0) == -1){
+        message.textContent = `It's a tie!`
+        return
+    } 
+    for(let i = 0; i < board.length; i++){
+        let vertical = board[i] + board[i+7] + board[i+14] + board[i+21]
+        let horizontal = board[i] + board[i+1] + board[i+2] + board[i+3]
+        let diagonal1 = board[i] + board[i+8] + board[i+16] + board[i+24]
+        let diagonal2 = board[i] + board[i+6] + board[i+12] + board[i+18]
+        if(vertical === 4 || vertical === -4 ){
+            turn *= -1
+            if(turn === 1) {
+                turn = 'Yellow'
+            } else {
+                turn = 'Red'
+            }
+            message.textContent = `${turn} is the winner!`
+            section.removeEventListener('click', handleClick)
+        }
+        if(horizontal === 4 || horizontal === -4 ){
+            turn *= -1
+            if(turn === 1) {
+                turn = 'Yellow'
+            } else {
+                turn = 'Red'
+            }
+            message.textContent = `${turn} is the winner!`
+            section.removeEventListener('click', handleClick)
+        }
+        if(diagonal1 === 4 || diagonal1 === -4 ){
+            turn *= -1
+            if(turn === 1) {
+                turn = 'Yellow'
+            } else {
+                turn = 'Red'
+            }
+            message.textContent = `${turn} is the winner!`
+            section.removeEventListener('click', handleClick)
+        }
+        if(diagonal2 === 4 || diagonal2 === -4 ){
+            turn *= -1
+            if(turn === 1) {
+                turn = 'Yellow'
+            } else {
+                turn = 'Red'
+            }
+            message.textContent = `${turn} is the winner!`
+            section.removeEventListener('click', handleClick)
+        }
+    }
 }
- 
 
-
-
-
+//reset button
+button.addEventListener('click', init);
 
 
 
